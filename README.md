@@ -5,7 +5,7 @@ Minimal CLI for Google Drive, Docs, Sheets, and Slides.
 ## Install
 
 ```bash
-npm install -g @anthropic/gdcli
+npm install -g @tjboudreaux/gdcli
 ```
 
 ## Setup

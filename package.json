@@ -1,5 +1,5 @@
 {
-	"name": "@anthropic/gdcli",
+	"name": "@tjboudreaux/gdcli",
 	"version": "0.1.0",
 	"description": "Google Drive, Docs, Sheets, Slides CLI",
 	"type": "module",
