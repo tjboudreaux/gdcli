@@ -222,12 +222,22 @@ describe("DriveService", () => {
 	});
 
 	describe("upload", () => {
+		const closeStream = (stream: fs.ReadStream): Promise<void> => {
+			return new Promise((resolve) => {
+				stream.on("close", resolve);
+				stream.destroy();
+			});
+		};
+
 		it("should upload file with default options", async () => {
 			const testFile = path.join(tempDir, "upload.txt");
 			fs.writeFileSync(testFile, "test content");
 
-			mockDriveInstance.files.create.mockResolvedValue({
-				data: { id: "new-123", name: "upload.txt", mimeType: "text/plain" },
+			mockDriveInstance.files.create.mockImplementation(async (params: { media?: { body?: fs.ReadStream } }) => {
+				if (params.media?.body) {
+					await closeStream(params.media.body);
+				}
+				return { data: { id: "new-123", name: "upload.txt", mimeType: "text/plain" } };
 			});
 
 			const result = await service.upload("test@example.com", testFile);
@@ -237,11 +247,14 @@ describe("DriveService", () => {
 		});
 
 		it("should upload file with custom name and parent", async () => {
-			const testFile = path.join(tempDir, "upload.txt");
+			const testFile = path.join(tempDir, "upload2.txt");
 			fs.writeFileSync(testFile, "test content");
 
-			mockDriveInstance.files.create.mockResolvedValue({
-				data: { id: "new-123", name: "custom.txt", mimeType: "text/plain" },
+			mockDriveInstance.files.create.mockImplementation(async (params: { media?: { body?: fs.ReadStream } }) => {
+				if (params.media?.body) {
+					await closeStream(params.media.body);
+				}
+				return { data: { id: "new-123", name: "custom.txt", mimeType: "text/plain" } };
 			});
 
 			await service.upload("test@example.com", testFile, {
