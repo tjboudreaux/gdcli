@@ -179,6 +179,12 @@ npm run check
 npm test
 ```
 
+## Acknowledgements
+
+Inspired by:
+- [gmcli](https://github.com/badlogic/gmcli) - Gmail CLI by badlogic
+- [gdcli](https://github.com/badlogic/gdcli) - Google Drive CLI by badlogic
+
 ## License
 
 MIT
