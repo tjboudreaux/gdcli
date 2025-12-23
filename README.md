@@ -1,5 +1,7 @@
 # gdcli
 
+![gdcli](gdcli.jpeg)
+
 Minimal CLI for Google Drive, Docs, Sheets, and Slides.
 
 ## Install
