@@ -1,6 +1,6 @@
 {
 	"name": "@tjboudreaux/gdcli",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"description": "Google Drive, Docs, Sheets, Slides CLI",
 	"type": "module",
 	"bin": {
@@ -45,6 +45,10 @@
 	],
 	"author": "",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/tjboudreaux/gdcli"
+	},
 	"engines": {
 		"node": ">=20.0.0"
 	},
