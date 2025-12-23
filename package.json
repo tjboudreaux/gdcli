@@ -1,0 +1,48 @@
+{
+	"name": "@anthropic/gdcli",
+	"version": "0.1.0",
+	"description": "Google Drive, Docs, Sheets, Slides CLI",
+	"type": "module",
+	"bin": {
+		"gdcli": "dist/cli.js"
+	},
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"files": [
+		"dist"
+	],
+	"scripts": {
+		"build": "tsc && chmod +x dist/cli.js",
+		"check": "biome check src/ --write --diagnostic-level=error && tsc --noEmit",
+		"test": "vitest run --coverage",
+		"test:watch": "vitest",
+		"test:coverage": "vitest run --coverage --coverage.thresholds.lines=90 --coverage.thresholds.functions=90 --coverage.thresholds.branches=90 --coverage.thresholds.statements=90",
+		"prepublishOnly": "npm run build",
+		"prepare": "husky"
+	},
+	"dependencies": {
+		"google-auth-library": "^10.1.0",
+		"googleapis": "^153.0.0",
+		"marked": "^15.0.0"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@types/node": "^22.10.1",
+		"@vitest/coverage-v8": "^2.1.8",
+		"husky": "^9.1.7",
+		"typescript": "^5.7.2",
+		"vitest": "^2.1.8"
+	},
+	"keywords": [
+		"google-drive",
+		"google-docs",
+		"google-sheets",
+		"google-slides",
+		"cli"
+	],
+	"author": "",
+	"license": "MIT",
+	"engines": {
+		"node": ">=20.0.0"
+	}
+}
